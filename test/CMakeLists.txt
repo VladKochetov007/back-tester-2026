@@ -16,6 +16,8 @@ file(GLOB TEST_SRC CONFIGURE_DEPENDS *.cpp)
 set(TARGET back-tester-tests)
 add_executable(${TARGET} ${TEST_SRC})
 
+find_package(Threads REQUIRED)
+
 # Link against the necessary libraries
 target_link_libraries(${TARGET} PRIVATE
     Catch2-static-lib
@@ -23,6 +25,8 @@ target_link_libraries(${TARGET} PRIVATE
     back-tester-lob
     back-tester-ingestion
     back-tester-dispatch
+    back-tester-sim
+    Threads::Threads
 )
 
 # Register the tests with CTest

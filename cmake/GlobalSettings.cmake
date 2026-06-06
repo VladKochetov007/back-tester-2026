@@ -5,6 +5,12 @@
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/Modules)
 
 option(BUILD_TESTS "Build tests" ON)
+option(BUILD_PYTHON "Build Python bindings (_cmf_bt)" OFF)
+
+# Python extension modules link the static libs into a shared object.
+if(BUILD_PYTHON)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
 
 # Choose build type
 if(NOT CMAKE_BUILD_TYPE)

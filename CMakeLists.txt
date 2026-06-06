@@ -11,6 +11,10 @@ include(cmake/GenerateVersionFile.cmake)
 add_subdirectory(src)
 add_subdirectory(config)
 
+if(BUILD_PYTHON)
+    add_subdirectory(python)
+endif()
+
 if(BUILD_TESTS)
     enable_testing()
     add_subdirectory(test)
